@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
+
 
 public class gameplayController : MonoBehaviour
 {
@@ -13,6 +17,13 @@ public class gameplayController : MonoBehaviour
     private float halfGroundSize;
     private BaseController plyerController;
 
+    private TMP_Text score_Text;
+    private int zombieKillCount;
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject gamweOverPanel;
+    [SerializeField] private TMP_Text final_Score;
+
+
     void Awake ()
     {
         MakeIntance();
@@ -23,6 +34,8 @@ public class gameplayController : MonoBehaviour
         halfGroundSize = GameObject.Find("GroundBlock Main").GetComponent<GroundBlock>().halfLength;
         plyerController = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseController>();
         StartCoroutine("GenerateObstacles");
+
+        score_Text = GameObject.Find("Text Sc").GetComponent<TMP_Text>();
     }
 
     void MakeIntance()
@@ -103,5 +116,43 @@ public class gameplayController : MonoBehaviour
             Instantiate(zombiePrefabs[Random.Range(0, zombiePrefabs.Length)],
                 pos + shift * i, Quaternion.identity);
         }
+    }
+
+    public void IncreaseScore()
+    {
+        zombieKillCount++;
+        score_Text.text = zombieKillCount.ToString();
+    }
+
+    public void PauseGame()
+    {
+        pausePanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void ResumeGame()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void ExitGame()
+    {
+        //Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+        
+    }
+
+    public void GameOver()
+    {
+        Time.timeScale = 0f;
+        gamweOverPanel.SetActive(true);
+        final_Score.text = "Killed: "+ zombieKillCount.ToString();
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("SampleScene");
     }
 }

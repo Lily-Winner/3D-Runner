@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5680229907294430158}
   - component: {fileID: 7270810998172047010}
   - component: {fileID: 3242067594599919001}
+  - component: {fileID: 6888486187106669303}
   m_Layer: 0
   m_Name: Player Tank 1
   m_TagString: Untagged
@@ -171,6 +172,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2252d2d958cba4a4aaf422662e63ca1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 0, y: 0, z: 0}
+  x_speed: 8
+  z_Speed: 15
+  accelerated: 15
+  deccelerated: 10
+  low_Sound_Pitch: 0
+  normal_Sound_Pitch: 0
+  high_Sound_Pitch: 0
+  engine_On_Sound: {fileID: 0}
+  engine_Off_Sound: {fileID: 0}
+  bulletStartPoint: {fileID: 0}
+  bullrtPrefab: {fileID: 0}
+  shootFX: {fileID: 0}
+  canShoot: 0
+--- !u!114 &6888486187106669303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680229907294430159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe3e050df5b84b5c93ce713b95a9683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5680229906735629224

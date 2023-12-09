@@ -19,7 +19,7 @@ public class BaseController : MonoBehaviour
     {
         speed = new Vector3(0f, 0f, z_Speed);
         soundManager = GetComponent<AudioSource>();
-        
+        //print(is_Slow);
     }
     private void Start()
     {

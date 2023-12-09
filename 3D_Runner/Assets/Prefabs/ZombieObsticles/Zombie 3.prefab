@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7211298404952540993}
   - component: {fileID: 2117601643093303844}
   - component: {fileID: 7627808845071407694}
-  - component: {fileID: 5660274862140194958}
+  - component: {fileID: 1380077956616827662}
   m_Layer: 0
   m_Name: Zombie 3
   m_TagString: Untagged
@@ -64,26 +64,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.43, y: 1.63, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &5660274862140194958
-Animator:
-  serializedVersion: 5
+--- !u!114 &1380077956616827662
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7100339674961703113}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 69a526a296b75074db3310a32ab2ba19, type: 3}
-  m_Controller: {fileID: 9100000, guid: 92c93b80307cf90438fcfadd52eab10c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 801b932c48d394a77828dd12dd171615, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodFXPrefab: {fileID: 1690365919121730, guid: 01905950d6bb84877a984f64b83d6c2d, type: 3}
+  speed: 1
 --- !u!1001 &7315531393959599262
 PrefabInstance:
   m_ObjectHideFlags: 0
