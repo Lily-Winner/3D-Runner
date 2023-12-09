@@ -1,0 +1,107 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class gameplayController : MonoBehaviour
+{
+    public static gameplayController instance;
+
+    public GameObject[] obstaclePrefabs;
+    public GameObject[] zombiePrefabs;
+    public Transform [] lanes;
+    public float min_ObstacleDelay = 10f, max_ObstacleDelay = 40f;
+    private float halfGroundSize;
+    private BaseController plyerController;
+
+    void Awake ()
+    {
+        MakeIntance();
+    }
+
+    void Start()
+    {
+        halfGroundSize = GameObject.Find("GroundBlock Main").GetComponent<GroundBlock>().halfLength;
+        plyerController = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseController>();
+        StartCoroutine("GenerateObstacles");
+    }
+
+    void MakeIntance()
+    {
+        // important theme of singelton, but its not a singelton, just an instance
+        if (instance == null)
+            instance = this;
+        else if (instance != null)
+            Destroy(gameObject);
+    }
+
+    IEnumerator GenerateObstacles()
+    {
+        float timer = Random.Range(min_ObstacleDelay, max_ObstacleDelay)/plyerController.speed.z;
+        yield return new WaitForSeconds(timer);
+        CreateObstacles(plyerController.gameObject.transform.position.z+halfGroundSize);//position of player plus offset of half ground track
+        StartCoroutine("GenerateObstacles");
+
+    }
+     void CreateObstacles(float zPos)
+    {
+        int r = Random.Range(0, 10);
+        if (0 <= r && r<7)
+        {
+            int obstacleLane = Random.Range(0, lanes.Length);// mean 012
+            // 0 1 2
+
+            AddObstacle(new Vector3(lanes[obstacleLane].transform.position.x, 0f, zPos),
+                Random.Range(0,obstaclePrefabs.Length));
+
+            int zombieLane = 0;
+
+            
+            //creating obstacle on line, that not same previos line(0,1,2)
+            if (obstacleLane == 0)
+                zombieLane = Random.Range(0, 2) == 1 ? 1 : 2;
+            else if (obstacleLane == 1)
+                zombieLane = Random.Range(0, 2) == 1 ? 0 : 2;
+            else if (obstacleLane == 2)
+                zombieLane = Random.Range(0, 2) == 1 ? 1 : 0;
+
+            AddZombies(new Vector3(lanes[zombieLane].transform.position.x, 0f, zPos));
+        }
+
+            
+    }
+
+    void AddObstacle(Vector3 position, int type)
+    {
+        GameObject obstacle = Instantiate(obstaclePrefabs[type], position, Quaternion.identity);
+        bool mirror = Random.Range(0, 2) == 1;
+
+        switch (type)
+        {
+            case 0:
+                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -20 : 20, 0f);
+                break;
+            case 1:
+                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -20 : 20, 0f);
+                break;
+            case 2:
+                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -1 : 1, 0f);
+                break;
+            case 3:
+                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -170 : 170, 0f);
+                break;   
+        }
+        obstacle.transform.position = position;
+    }
+
+    void AddZombies(Vector3 pos)
+    {
+        int count = Random.Range(0, 3) + 1;
+
+        for (int i = 0; i < count; i++)
+        {
+            Vector3 shift = new Vector3(Random.Range(-0.5f, 0.5f), 0f, Random.Range(1f, 10f) * i);
+            Instantiate(zombiePrefabs[Random.Range(0, zombiePrefabs.Length)],
+                pos + shift * i, Quaternion.identity);
+        }
+    }
+}
