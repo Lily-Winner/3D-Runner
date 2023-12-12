@@ -76,8 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 801b932c48d394a77828dd12dd171615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodFXPrefab: {fileID: 1690365919121730, guid: 01905950d6bb84877a984f64b83d6c2d, type: 3}
-  speed: 1
+  bloodFXPrefab: {fileID: 1690365919121730, guid: 4f7ff6e086f494898999d4bbdab12f5d, type: 3}
 --- !u!1001 &638051161522415056
 PrefabInstance:
   m_ObjectHideFlags: 0

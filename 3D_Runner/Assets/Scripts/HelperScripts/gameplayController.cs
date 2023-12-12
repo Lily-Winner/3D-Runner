@@ -63,7 +63,7 @@ public class gameplayController : MonoBehaviour
             int obstacleLane = Random.Range(0, lanes.Length);// mean 012
             // 0 1 2
 
-            AddObstacle(new Vector3(lanes[obstacleLane].transform.position.x, 0f, zPos),
+            AddObstacle(new Vector3(lanes[obstacleLane].transform.position.x, 0.1f, zPos),
                 Random.Range(0,obstaclePrefabs.Length));
 
             int zombieLane = 0;
@@ -101,7 +101,13 @@ public class gameplayController : MonoBehaviour
                 break;
             case 3:
                 obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -170 : 170, 0f);
-                break;   
+                break;
+            case 4:
+                obstacle.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
+                break;
+            case 5:
+                obstacle.transform.position = new Vector3(0f, 0.5f, 0f);
+                break;
         }
         obstacle.transform.position = position;
     }
