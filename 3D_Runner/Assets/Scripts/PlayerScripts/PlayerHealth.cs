@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
         health_Slider = GameObject.Find("Health bar").GetComponent<Slider>();
         health_Slider.value = healthValue;
         UI_Holder = GameObject.Find("Ui Holder");
-
+        //Widgets_Holder = GameObject.Find("Ui Holder");
     }
 
    

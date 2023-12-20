@@ -17,7 +17,7 @@ public class AnimatioEvents : MonoBehaviour
     }
 
 
-    void ResetShooting()
+     public void ResetShooting()
     {
         playerController.canShoot = true;
         anim.Play("Idle");

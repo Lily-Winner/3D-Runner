@@ -12,6 +12,9 @@ public class PlayerController : BaseController
     public GameObject bullrtPrefab;
     public ParticleSystem shootFX;
     private Animator shootSliderAnim;
+    private Animator myAnim;
+    
+    
     [HideInInspector] public bool canShoot;
 
 
@@ -19,10 +22,14 @@ public class PlayerController : BaseController
     {
         myBody = GetComponent<Rigidbody>();
 
-        shootSliderAnim = GameObject.Find("Fire bar ").GetComponent<Animator>();
+        shootSliderAnim = GameObject.Find("Fire bar").GetComponent<Animator>();
 
-        GameObject.Find("Shoot Button").GetComponent<Button>().onClick.AddListener(ShootingControl);
+        myAnim = GameObject.Find("Fire bar").GetComponent<Animator>();
+
+        /////////
+        //GameObject.Find("Shoot Button").GetComponent<Button>().onClick.AddListener(ShootingControl);
         canShoot = true;
+        
     }
 
     void FixedUpdate()
@@ -34,7 +41,7 @@ public class PlayerController : BaseController
     private void Update()
     {
         ControlMovementWithKeyboard();
-        
+        Shoot();
     }
 
 
@@ -47,28 +54,54 @@ public class PlayerController : BaseController
     void ControlMovementWithKeyboard()
     {
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
             MoveLeft();
+            
+        }
+
 
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+        {
             MoveRight();
+            
+        }
 
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
             MoveFast();
+            
+        }
+
 
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
             MoveSlow();
+            
+        }
 
         if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
             MoveStraight();
+            
+        }
 
         if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-            MoveRight();
+        {
+            MoveStraight();
+            
+        }
 
         if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+        {
             MoveNormal();
+            
+        }
 
         if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
             MoveNormal();
+            
+        }
     }
 
     void ChangeRotation()
@@ -103,13 +136,24 @@ public class PlayerController : BaseController
                 bullet.GetComponent<BulletScript>().Move(2000f);
 
                 shootFX.Play();
-
-
                 canShoot = false;
-
                 shootSliderAnim.Play("Fill");
             }
         }
     }
- 
+
+    protected void Shoot()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {      
+            ShootingControl();
+            //Invoke("ShootingControl", 1f);
+            //GetComponent<AnimatioEvents>().ResetShooting();
+            canShoot = false;
+        }
+    }
+
+
+
 }

@@ -63,7 +63,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.86, y: 0.76, z: 0.7}
-  m_Center: {x: 0, y: 0.06, z: 0.06}
+  m_Center: {x: 0, y: 0.54, z: 0.33}
 --- !u!114 &2125505688553998288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,15 +90,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04d2ba869c4164a54aeea78ec9a73125, type: 3}
       propertyPath: m_LocalScale.x
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04d2ba869c4164a54aeea78ec9a73125, type: 3}
       propertyPath: m_LocalScale.y
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04d2ba869c4164a54aeea78ec9a73125, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 04d2ba869c4164a54aeea78ec9a73125, type: 3}
       propertyPath: m_LocalPosition.x
@@ -154,31 +154,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04d2ba869c4164a54aeea78ec9a73125, type: 3}
---- !u!1 &7259325021248101033 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 04d2ba869c4164a54aeea78ec9a73125, type: 3}
-  m_PrefabInstance: {fileID: 7529777186188044280}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &347426713293253769
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7259325021248101033}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d519173342b134465add13009be316d9, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!4 &8067526972339208211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 04d2ba869c4164a54aeea78ec9a73125, type: 3}

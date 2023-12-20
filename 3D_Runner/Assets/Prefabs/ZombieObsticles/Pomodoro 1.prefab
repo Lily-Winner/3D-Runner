@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pomodoro
       objectReference: {fileID: 0}
+    - target: {fileID: 4969647093116084437, guid: 3c0e2201ffdaf4830959f7d98819de93, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5745585009642502766, guid: 3c0e2201ffdaf4830959f7d98819de93, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -132,7 +136,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6915074657214464257, guid: 3c0e2201ffdaf4830959f7d98819de93, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de663183dde5e451bb606c7d50d2d85d, type: 2}
+    - target: {fileID: 6915074657214464257, guid: 3c0e2201ffdaf4830959f7d98819de93, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: de663183dde5e451bb606c7d50d2d85d, type: 2}
+    m_RemovedComponents:
+    - {fileID: 4969647093116084437, guid: 3c0e2201ffdaf4830959f7d98819de93, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3c0e2201ffdaf4830959f7d98819de93, type: 3}
 --- !u!4 &1511493899666045216 stripped
 Transform:

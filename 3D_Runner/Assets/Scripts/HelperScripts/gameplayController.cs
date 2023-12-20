@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEditor.PackageManager;
+using UnityEngine.UIElements;
 
 
 public class gameplayController : MonoBehaviour
@@ -12,19 +14,28 @@ public class gameplayController : MonoBehaviour
 
     public GameObject[] obstaclePrefabs;
     public GameObject[] zombiePrefabs;
-    public Transform [] lanes;
+    public Transform[] lanes;
+    
     public float min_ObstacleDelay = 10f, max_ObstacleDelay = 40f;
     private float halfGroundSize;
     private BaseController plyerController;
 
-    private TMP_Text score_Text;
+
+    [HideInInspector] public TMP_Text score_Text;
     private int zombieKillCount;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject gamweOverPanel;
     [SerializeField] private TMP_Text final_Score;
 
+    public AudioSource mySound;
 
-    void Awake ()
+    private Animator myAnim;
+
+    private GameObject w1;
+
+
+
+    void Awake()
     {
         MakeIntance();
     }
@@ -34,8 +45,15 @@ public class gameplayController : MonoBehaviour
         halfGroundSize = GameObject.Find("GroundBlock Main").GetComponent<GroundBlock>().halfLength;
         plyerController = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseController>();
         StartCoroutine("GenerateObstacles");
+        mySound = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
+        mySound.Play();
+
+        w1 = GameObject.Find("W1");
+
+
 
         score_Text = GameObject.Find("Text Sc").GetComponent<TMP_Text>();
+        myAnim = GameObject.Find("Text Sc").GetComponent<Animator>();
     }
 
     void MakeIntance()
@@ -49,26 +67,32 @@ public class gameplayController : MonoBehaviour
 
     IEnumerator GenerateObstacles()
     {
-        float timer = Random.Range(min_ObstacleDelay, max_ObstacleDelay)/plyerController.speed.z;
+        float timer = Random.Range(min_ObstacleDelay, max_ObstacleDelay) / plyerController.speed.z;
         yield return new WaitForSeconds(timer);
-        CreateObstacles(plyerController.gameObject.transform.position.z+halfGroundSize);//position of player plus offset of half ground track
+        CreateObstacles(plyerController.gameObject.transform.position.z + halfGroundSize);//position of player plus offset of half ground track
         StartCoroutine("GenerateObstacles");
 
     }
-     void CreateObstacles(float zPos)
+
+    IEnumerator WaitIceCream()
+    {
+        yield return new WaitForSeconds(3.5f);
+
+    }
+    void CreateObstacles(float zPos)
     {
         int r = Random.Range(0, 10);
-        if (0 <= r && r<7)
+        if (0 <= r && r < 7)
         {
             int obstacleLane = Random.Range(0, lanes.Length);// mean 012
             // 0 1 2
 
             AddObstacle(new Vector3(lanes[obstacleLane].transform.position.x, 0.1f, zPos),
-                Random.Range(0,obstaclePrefabs.Length));
+                Random.Range(0, obstaclePrefabs.Length));
 
             int zombieLane = 0;
 
-            
+
             //creating obstacle on line, that not same previos line(0,1,2)
             if (obstacleLane == 0)
                 zombieLane = Random.Range(0, 2) == 1 ? 1 : 2;
@@ -80,7 +104,7 @@ public class gameplayController : MonoBehaviour
             AddZombies(new Vector3(lanes[zombieLane].transform.position.x, 0f, zPos));
         }
 
-            
+
     }
 
     void AddObstacle(Vector3 position, int type)
@@ -94,20 +118,21 @@ public class gameplayController : MonoBehaviour
                 obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -20 : 20, 0f);
                 break;
             case 1:
-                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -20 : 20, 0f);
+                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -2 : 2, 0f);
                 break;
             case 2:
-                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -1 : 1, 0f);
+                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -45 : 45, 0f);
                 break;
             case 3:
-                obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -170 : 170, 0f);
-                break;
-            case 4:
-                obstacle.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
+                //obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -170 : 170, 0f);
+                WaitIceCream();
+                Instantiate(obstaclePrefabs[3], position,
+                    obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -170 : 170, 0f));
                 break;
             case 5:
-                obstacle.transform.position = new Vector3(0f, 0.5f, 0f);
+                obstacle.transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
                 break;
+
         }
         obstacle.transform.position = position;
     }
@@ -128,37 +153,68 @@ public class gameplayController : MonoBehaviour
     {
         zombieKillCount++;
         score_Text.text = zombieKillCount.ToString();
+        score_Text.fontSize = 200f;
+        Invoke("ReturnFontSize", 0.2f);
+
     }
 
     public void PauseGame()
     {
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
+        mySound.Stop();
+        w1.SetActive(false);
+        //Widgets_Holder2.SetActive(false);
     }
 
     public void ResumeGame()
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
+        mySound.Play();
+
+        w1.SetActive(true);
+        //Widgets_Holder2.SetActive(true);
     }
 
     public void ExitGame()
     {
-        //Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
-        
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu2");
+        mySound.Stop();
+        w1.SetActive(false);
+        //Widgets_Holder2.SetActive(false);
+
     }
 
     public void GameOver()
     {
         Time.timeScale = 0f;
         gamweOverPanel.SetActive(true);
-        final_Score.text = "Killed: "+ zombieKillCount.ToString();
+        final_Score.text = "Score: " + zombieKillCount.ToString();
+        mySound.Stop();
+
+        w1.SetActive(false);
+        //Widgets_Holder2.SetActive(false);
+
     }
 
     public void Restart()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("SampleScene");
+        mySound.Stop();
+
+        w1.SetActive(true);
+        //Widgets_Holder2.SetActive(true);
     }
+
+    public void ReturnFontSize()
+    {
+
+        score_Text.fontSize = 60f;
+    }
+
+
+    
 }

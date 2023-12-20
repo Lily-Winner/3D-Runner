@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6385730789784666844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8400472698473238012}
+  m_Layer: 0
+  m_Name: Raavioli
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8400472698473238012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6385730789784666844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4133559134145192594}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3072663733511356145
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8400472698473238012}
+    m_Modifications:
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.534991
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.171428
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.3193753
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7060205
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6153832
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.14435408
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -15.861
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.645
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 92.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779698037628634841, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: m_Name
+      value: Ravioli
+      objectReference: {fileID: 0}
+    - target: {fileID: 8197399178657155437, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: myWidget
+      value: 
+      objectReference: {fileID: 2757983287280116303, guid: 6446c271b7e8647eebc2e6ed2286167a, type: 3}
+    - target: {fileID: 8197399178657155437, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 1690365919121730, guid: f4210282f4cb14e238a8c68ef9b993e3, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+--- !u!4 &4133559134145192594 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1439200535497464931, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+  m_PrefabInstance: {fileID: 3072663733511356145}
+  m_PrefabAsset: {fileID: 0}

@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ZombieScript : MonoBehaviour
 {
     public GameObject bloodFXPrefab;
     private Rigidbody myBody;
     private float speed =1f;
     private bool isAlive;
+    
 
 
 
@@ -18,6 +20,7 @@ public class ZombieScript : MonoBehaviour
         speed = Random.Range(3f, 9f);
         myBody.velocity = new Vector3(0f, 0f, -speed);
         isAlive = true;
+
     }
 
     
@@ -39,9 +42,10 @@ public class ZombieScript : MonoBehaviour
         isAlive = false;
         myBody.velocity = Vector3.zero;
         GetComponent<Collider>().enabled = false;
-        GetComponentInChildren<Animator>().Play("Idle");
+        //GetComponentInChildren<Animator>().Play("Idle");
         transform.rotation = Quaternion.Euler(90f, 0f, 0f);
         transform.localScale = new Vector3(1f, 1f, 0.2f);
+        gameObject.SetActive(false);
         transform.position = new Vector3(transform.position.x, 0.2f, transform.position.z);
         
     }
@@ -59,6 +63,7 @@ public class ZombieScript : MonoBehaviour
             Invoke("DeactivateGameObject", 3f);
             gameplayController.instance.IncreaseScore();
             Die();
+
         }
     }
 
@@ -66,4 +71,6 @@ public class ZombieScript : MonoBehaviour
     {
 
     }
+
+    
 }
