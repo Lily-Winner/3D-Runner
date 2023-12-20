@@ -31,7 +31,7 @@ public class gameplayController : MonoBehaviour
 
     private Animator myAnim;
 
-    private GameObject w1;
+    private GameObject w1,w2,w3,w4,w5, w6;
 
 
 
@@ -49,6 +49,11 @@ public class gameplayController : MonoBehaviour
         mySound.Play();
 
         w1 = GameObject.Find("W1");
+        w2 = GameObject.Find("W2");
+        w3 = GameObject.Find("W3");
+        w4 = GameObject.Find("W4");
+        w5 = GameObject.Find("W5");
+        w6 = GameObject.Find("W6");
 
 
 
@@ -164,7 +169,12 @@ public class gameplayController : MonoBehaviour
         Time.timeScale = 0f;
         mySound.Stop();
         w1.SetActive(false);
-        //Widgets_Holder2.SetActive(false);
+        w2.SetActive(false);
+        w3.SetActive(false);
+        w4.SetActive(false);
+        w5.SetActive(false);
+        w6.SetActive(false);
+
     }
 
     public void ResumeGame()
@@ -174,7 +184,11 @@ public class gameplayController : MonoBehaviour
         mySound.Play();
 
         w1.SetActive(true);
-        //Widgets_Holder2.SetActive(true);
+        w2.SetActive(true);
+        w3.SetActive(true);
+        w4.SetActive(true);
+        w5.SetActive(true);
+        w6.SetActive(true);
     }
 
     public void ExitGame()
@@ -183,7 +197,11 @@ public class gameplayController : MonoBehaviour
         SceneManager.LoadScene("MainMenu2");
         mySound.Stop();
         w1.SetActive(false);
-        //Widgets_Holder2.SetActive(false);
+        w2.SetActive(false);
+        w3.SetActive(false);
+        w4.SetActive(false);
+        w5.SetActive(false);
+        w6.SetActive(false);
 
     }
 
@@ -195,7 +213,11 @@ public class gameplayController : MonoBehaviour
         mySound.Stop();
 
         w1.SetActive(false);
-        //Widgets_Holder2.SetActive(false);
+        w2.SetActive(false);
+        w3.SetActive(false);
+        w4.SetActive(false);
+        w5.SetActive(false);
+        w6.SetActive(false);
 
     }
 
@@ -206,7 +228,12 @@ public class gameplayController : MonoBehaviour
         mySound.Stop();
 
         w1.SetActive(true);
-        //Widgets_Holder2.SetActive(true);
+        w2.SetActive(true);
+        w3.SetActive(true);
+        w4.SetActive(true);
+        w5.SetActive(true);
+        w6.SetActive(true);
+
     }
 
     public void ReturnFontSize()
