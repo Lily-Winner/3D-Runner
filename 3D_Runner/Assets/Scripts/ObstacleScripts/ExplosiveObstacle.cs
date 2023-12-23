@@ -9,15 +9,11 @@ public class ExplosiveObstacle : MonoBehaviour
 {
     public GameObject explosionPrefab;
     public int damage = 20;
-    private GameObject w1, w2, w3, w4, w5, w6;
-    private Animator w1Anim, w2Anim, w3Anim,w4Anim, w5Anim, w6Anim;
-    private bool canPlay, canPlay2;
+    private GameObject w1, w2, w3, w4, w5, w6; //Widgets
+    private Animator w1Anim, w2Anim, w3Anim,w4Anim, w5Anim, w6Anim; //Animation of widgets
 
-
-
-
-
-    private void Awake()
+    //Finding all widgets objects in UI
+    private void Start()
     {
         w1 = GameObject.Find("W1");
         w1Anim = w1.GetComponent<Animator>();
@@ -39,69 +35,45 @@ public class ExplosiveObstacle : MonoBehaviour
 
     }
 
-
-
-    private void Start()
-    {
-        
-
-    }
-
-    private void Update()
-    {
-        canPlay = true;
-        canPlay2 = true;
-       
-    }
-
+    //Aply damage to player, show widgets (screen spots effect) and show explosion effects of objects
     private void OnCollisionEnter(Collision collision)
     {
-        
-
         if (collision.gameObject.tag == "Player")
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             collision.gameObject.GetComponent<PlayerHealth>().ApplyDamage(damage);
             gameObject.SetActive(false);
 
-
-            if (explosionPrefab.name == "GlassEffect")
+            if(explosionPrefab != null)
             {
-                w1Anim.Play("W1");
-                canPlay = false;
-            }
+                switch (explosionPrefab.name)
+                {
+                    case "GlassEffect":
+                        w1Anim.Play("W1");
+                        break;
 
-            if(explosionPrefab.name == "Spaghetti  Effect")
-            {
-                w2Anim.Play("W2");
-                canPlay2 = false;
-            }
+                    case "Spaghetti  Effect":
+                        w2Anim.Play("W2");
+                        break;
 
-            if (explosionPrefab.name == "PomodoroEffect")
-            {
-                w3Anim.Play("W3");
-                canPlay2 = false;
-            }
+                    case "PomodoroEffect":
+                        w3Anim.Play("W3");
+                        break;
 
-            if (explosionPrefab.name == "IceCreamEffect")
-            {
-                w4Anim.Play("W4");
-                canPlay2 = false;
-            }
+                    case "IceCreamEffect":
+                        w4Anim.Play("W4");
+                        break;
 
-            if (explosionPrefab.name == "Ravioli effect")
-            {
-                w5Anim.Play("W5");
-                canPlay2 = false;
-            }
+                    case "Ravioli effect":
+                        w5Anim.Play("W5");
+                        break;
 
-            if (explosionPrefab.name == "KnifeEffect")
-            {
-                w6Anim.Play("W6");
-                canPlay2 = false;
-            }
+                    case "KnifeEffect":
+                        w6Anim.Play("W6");
+                        break;
 
-
+                }
+            }  
         }
         if (collision.gameObject.tag == "Bullet")
         {
@@ -112,8 +84,5 @@ public class ExplosiveObstacle : MonoBehaviour
         
 
     }
-
-
-   
 
 }

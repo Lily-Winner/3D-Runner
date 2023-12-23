@@ -5,15 +5,14 @@ using UnityEngine;
 
 public class ZombieScript : MonoBehaviour
 {
+
+    // This script about collectable objects (Name zombie is from previos game concept)
+
     public GameObject bloodFXPrefab;
     private Rigidbody myBody;
     private float speed =1f;
     private bool isAlive;
-    
-
-
-
-
+ 
     void Start()
     {
         myBody = GetComponent<Rigidbody>();
@@ -23,7 +22,7 @@ public class ZombieScript : MonoBehaviour
 
     }
 
-    
+    //Check if object is alive
     void Update()
     {
         if (isAlive)
@@ -42,7 +41,6 @@ public class ZombieScript : MonoBehaviour
         isAlive = false;
         myBody.velocity = Vector3.zero;
         GetComponent<Collider>().enabled = false;
-        //GetComponentInChildren<Animator>().Play("Idle");
         transform.rotation = Quaternion.Euler(90f, 0f, 0f);
         transform.localScale = new Vector3(1f, 1f, 0.2f);
         gameObject.SetActive(false);
@@ -55,6 +53,7 @@ public class ZombieScript : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    //Show explosion effect, increase score ("gameplayController" script) and call Die method
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Bullet")
@@ -63,14 +62,7 @@ public class ZombieScript : MonoBehaviour
             Invoke("DeactivateGameObject", 3f);
             gameplayController.instance.IncreaseScore();
             Die();
-
         }
     }
-
-    public void PauseGame()
-    {
-
-    }
-
-    
+ 
 }

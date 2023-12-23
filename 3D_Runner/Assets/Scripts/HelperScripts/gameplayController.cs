@@ -11,33 +11,29 @@ using UnityEngine.UIElements;
 public class gameplayController : MonoBehaviour
 {
     public static gameplayController instance;
-
     public GameObject[] obstaclePrefabs;
     public GameObject[] zombiePrefabs;
     public Transform[] lanes;
-    
     public float min_ObstacleDelay = 10f, max_ObstacleDelay = 40f;
     private float halfGroundSize;
     private BaseController plyerController;
 
-
     [HideInInspector] public TMP_Text score_Text;
-    private int zombieKillCount;
+    [HideInInspector] public int zombieKillCount;
+    [HideInInspector] public int recordScore;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject gamweOverPanel;
-    [SerializeField] private TMP_Text final_Score;
+    [SerializeField] public TMP_Text final_Score;
 
     public AudioSource mySound;
-
-    private Animator myAnim;
-
-    private GameObject w1,w2,w3,w4,w5, w6;
-
+    private Animator myAnim;  //Animation of score text
+    private GameObject w1,w2,w3,w4,w5, w6; // Widgets with animation
+    private Animator w1Anim, w2Anim, w3Anim, w4Anim, w5Anim, w6Anim;
 
 
     void Awake()
     {
-        MakeIntance();
+        MakeIntance(); 
     }
 
     void Start()
@@ -49,16 +45,36 @@ public class gameplayController : MonoBehaviour
         mySound.Play();
 
         w1 = GameObject.Find("W1");
+        w1Anim = w1.GetComponent<Animator>();
+
         w2 = GameObject.Find("W2");
+        w2Anim = w2.GetComponent<Animator>();
+
         w3 = GameObject.Find("W3");
+        w3Anim = w3.GetComponent<Animator>();
+
         w4 = GameObject.Find("W4");
+        w4Anim = w4.GetComponent<Animator>();
+
         w5 = GameObject.Find("W5");
+        w5Anim = w5.GetComponent<Animator>();
+
         w6 = GameObject.Find("W6");
-
-
+        w6Anim = w6.GetComponent<Animator>();
 
         score_Text = GameObject.Find("Text Sc").GetComponent<TMP_Text>();
         myAnim = GameObject.Find("Text Sc").GetComponent<Animator>();
+
+        recordScore=PlayerPrefs.GetInt("MyKey");
+    }
+
+    private void Update()
+    {
+        if (zombieKillCount>=recordScore)
+        {
+            recordScore = zombieKillCount;
+        }
+        
     }
 
     void MakeIntance()
@@ -79,11 +95,8 @@ public class gameplayController : MonoBehaviour
 
     }
 
-    IEnumerator WaitIceCream()
-    {
-        yield return new WaitForSeconds(3.5f);
 
-    }
+    // Calculates the plase of spawning objects
     void CreateObstacles(float zPos)
     {
         int r = Random.Range(0, 10);
@@ -112,6 +125,7 @@ public class gameplayController : MonoBehaviour
 
     }
 
+    //Spawning obstacle objects
     void AddObstacle(Vector3 position, int type)
     {
         GameObject obstacle = Instantiate(obstaclePrefabs[type], position, Quaternion.identity);
@@ -128,9 +142,7 @@ public class gameplayController : MonoBehaviour
             case 2:
                 obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -45 : 45, 0f);
                 break;
-            case 3:
-                //obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -170 : 170, 0f);
-                WaitIceCream();
+            case 3:       
                 Instantiate(obstaclePrefabs[3], position,
                     obstacle.transform.rotation = Quaternion.Euler(0f, mirror ? -170 : 170, 0f));
                 break;
@@ -142,6 +154,7 @@ public class gameplayController : MonoBehaviour
         obstacle.transform.position = position;
     }
 
+    //Spawning collactable objects. where objects named zombie (from previos game concept)
     void AddZombies(Vector3 pos)
     {
         int count = Random.Range(0, 3) + 1;
@@ -163,6 +176,7 @@ public class gameplayController : MonoBehaviour
 
     }
 
+    //Csall when pause game
     public void PauseGame()
     {
         pausePanel.SetActive(true);
@@ -177,6 +191,7 @@ public class gameplayController : MonoBehaviour
 
     }
 
+    //Call when return to game after pause
     public void ResumeGame()
     {
         pausePanel.SetActive(false);
@@ -191,6 +206,7 @@ public class gameplayController : MonoBehaviour
         w6.SetActive(true);
     }
 
+    //call when exit gsme
     public void ExitGame()
     {
         Time.timeScale = 1f;
@@ -203,13 +219,16 @@ public class gameplayController : MonoBehaviour
         w5.SetActive(false);
         w6.SetActive(false);
 
+        PlayerPrefs.SetInt("MyKey", recordScore);
+        PlayerPrefs.Save();
     }
 
+    //Call when lost
     public void GameOver()
     {
         Time.timeScale = 0f;
         gamweOverPanel.SetActive(true);
-        final_Score.text = "Score: " + zombieKillCount.ToString();
+        final_Score.text = "Your Score: " + zombieKillCount.ToString();
         mySound.Stop();
 
         w1.SetActive(false);
@@ -219,8 +238,11 @@ public class gameplayController : MonoBehaviour
         w5.SetActive(false);
         w6.SetActive(false);
 
+        PlayerPrefs.SetInt("MyKey", recordScore);
+        PlayerPrefs.Save();
     }
 
+    // Call when restart game
     public void Restart()
     {
         Time.timeScale = 1f;
@@ -234,14 +256,19 @@ public class gameplayController : MonoBehaviour
         w5.SetActive(true);
         w6.SetActive(true);
 
+        PlayerPrefs.SetInt("MyKey", recordScore);
+        PlayerPrefs.Save();
     }
 
+    //return size changes in score text
     public void ReturnFontSize()
     {
-
         score_Text.fontSize = 60f;
     }
 
+  
+
+    
 
     
 }

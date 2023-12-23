@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyAfterTime : MonoBehaviour
 {
-
+    // Destroy all objects after ground movement ("GroundBlock" script)
     public float timer = 3f;
 
     private void Start()

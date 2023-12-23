@@ -88,6 +88,10 @@ PrefabInstance:
       value: Ravioli
       objectReference: {fileID: 0}
     - target: {fileID: 8197399178657155437, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
+      propertyPath: damage
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8197399178657155437, guid: 590f6a2124f014bc5bec7c9f99d65c3f, type: 3}
       propertyPath: myWidget
       value: 
       objectReference: {fileID: 2757983287280116303, guid: 6446c271b7e8647eebc2e6ed2286167a, type: 3}

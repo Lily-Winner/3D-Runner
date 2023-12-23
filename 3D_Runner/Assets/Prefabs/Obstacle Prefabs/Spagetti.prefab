@@ -207,8 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1690365919121730, guid: 01905950d6bb84877a984f64b83d6c2d, type: 3}
-  damage: 20
-  myWidget: {fileID: 8901220635495843584, guid: 06ae2b4c5ec9c469091bf1bfe982f00e, type: 3}
+  damage: 17
 --- !u!95 &1379224670265510851
 Animator:
   serializedVersion: 5

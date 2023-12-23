@@ -20,6 +20,7 @@ public class GroundBlock : MonoBehaviour
         MoveGround();
     }
 
+    // Makes the feeling of infinity ground by moving the ground
     void MoveGround()
     {
         if(transform.position.z+halfLength< player.transform.position.z - endOffset)

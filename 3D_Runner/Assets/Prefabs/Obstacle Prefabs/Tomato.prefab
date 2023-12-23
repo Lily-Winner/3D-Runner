@@ -49,7 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1690365919121730, guid: fc1d25465bfb440378c0898a3fb38119, type: 3}
   damage: 20
-  myWidget: {fileID: 3719321167889683434, guid: ce46958a9b68e4d7fb2b16319daca768, type: 3}
 --- !u!65 &6501347051871303281
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -293,7 +293,7 @@ TextureImporter:
         width: 310
         height: 107
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -301,6 +301,48 @@ TextureImporter:
       bones: []
       spriteID: bfd7a4e1f6b8b45338f5f3b0623a1bc7
       internalID: -873992495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: create-button-asset-with-wooden-theme-with-animation-style-60996900_9
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 860
+        width: 389
+        height: 135
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf4dcc847a288443badfb08aa1d50af8
+      internalID: -2002754195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: create-button-asset-with-wooden-theme-with-animation-style-60996900_10
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 525
+        width: 612
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f00a183357d0c4a88922b4ab8d03a618
+      internalID: -2064005834
       vertices: []
       indices: 
       edges: []
@@ -316,11 +358,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      create-button-asset-with-wooden-theme-with-animation-style-60996900_10: -2064005834
       create-button-asset-with-wooden-theme-with-animation-style-60996900_6: -1521248399
       create-button-asset-with-wooden-theme-with-animation-style-60996900_1: -1788150418
       create-button-asset-with-wooden-theme-with-animation-style-60996900_5: 937106125
       create-button-asset-with-wooden-theme-with-animation-style-60996900_8: -873992495
       create-button-asset-with-wooden-theme-with-animation-style-60996900_0: -1083208365
+      create-button-asset-with-wooden-theme-with-animation-style-60996900_9: -2002754195
       create-button-asset-with-wooden-theme-with-animation-style-60996900_4: 1236588090
       create-button-asset-with-wooden-theme-with-animation-style-60996900_3: 1518863049
       create-button-asset-with-wooden-theme-with-animation-style-60996900_2: 22670046

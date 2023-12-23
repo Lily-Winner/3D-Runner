@@ -177,13 +177,6 @@ MonoBehaviour:
   speed: {x: 0, y: 0, z: 0}
   x_speed: 8
   z_Speed: 15
-  accelerated: 30
-  deccelerated: 10
-  low_Sound_Pitch: 0
-  normal_Sound_Pitch: 0
-  high_Sound_Pitch: 0
-  engine_On_Sound: {fileID: 0}
-  engine_Off_Sound: {fileID: 0}
   bulletStartPoint: {fileID: 6820759029906814118}
   bullrtPrefab: {fileID: 7226459821029408545, guid: f5120118f066d475e892a0731177efaf, type: 3}
   shootFX: {fileID: 7484341439126230}
@@ -208,6 +201,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8650411034503760}
     m_Modifications:
+    - target: {fileID: 100000, guid: a7bbdd126814c76429662524a1ce521d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: a7bbdd126814c76429662524a1ce521d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: a7bbdd126814c76429662524a1ce521d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: a7bbdd126814c76429662524a1ce521d, type: 3}
       propertyPath: m_Name
       value: tank_01_a
@@ -284,9 +289,13 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300006, guid: a7bbdd126814c76429662524a1ce521d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2300008, guid: a7bbdd126814c76429662524a1ce521d, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1175897327439278, guid: a7bbdd126814c76429662524a1ce521d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -366,7 +375,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9d8ee6a37abec4216b90b21ea9d93e63, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9d8ee6a37abec4216b90b21ea9d93e63, type: 3}
       propertyPath: m_LocalScale.x

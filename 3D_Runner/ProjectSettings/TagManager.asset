@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - Wine
   - WineS
+  - Music
+  - zombie
   layers:
   - Default
   - TransparentFX

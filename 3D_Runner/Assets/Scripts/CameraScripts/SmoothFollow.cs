@@ -15,8 +15,7 @@ public class SmoothFollow : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
-
-    
+  
     void LateUpdate()
     {
         FollowPlayer();

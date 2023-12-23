@@ -149,5 +149,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1690365919121730, guid: afa2ee0846c0d47e68d31f2596651fbc, type: 3}
-  damage: 20
-  myWidget: {fileID: 860210519660237113, guid: f04febc0dda7449c5acca58f414508fa, type: 3}
+  damage: 11

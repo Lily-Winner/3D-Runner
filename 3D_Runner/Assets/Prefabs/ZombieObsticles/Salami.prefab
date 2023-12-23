@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2125505688553998288}
   m_Layer: 0
   m_Name: Salami
-  m_TagString: Untagged
+  m_TagString: zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
