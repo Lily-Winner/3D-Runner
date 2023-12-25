@@ -40,6 +40,9 @@ public class SettingsScript : MonoBehaviour
         UpdateVolume();
     }
 
-
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 
 }

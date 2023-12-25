@@ -35,4 +35,14 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Settings");
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    public void OpenControls()
+    {
+        SceneManager.LoadScene("Controls");
+    }
 }
