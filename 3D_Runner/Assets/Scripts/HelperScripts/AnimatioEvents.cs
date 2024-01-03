@@ -9,13 +9,21 @@ public class AnimatioEvents : MonoBehaviour
     private Animator anim;
 
     void Start()
-    { 
+    {
         anim = GetComponent<Animator>();
+        playerController = GameObject.FindGameObjectWithTag("Player").
+            GetComponent<PlayerController>();
     }
 
     // As condition of load scene in animation
     void CameraStartGame()
     {
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public void ResetShooting()
+    {
+        playerController.canShoot = true;
+        anim.Play("Idle");
     }
 }

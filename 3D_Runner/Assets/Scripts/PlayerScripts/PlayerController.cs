@@ -23,6 +23,11 @@ public class PlayerController : BaseController
         canShoot = true;
     }
 
+    //public void ResetShooting()
+    //{
+    //    canShoot = true;
+    //}
+
     // Call Moving and Rotation Player methods
     void FixedUpdate()
     {
@@ -129,6 +134,8 @@ public class PlayerController : BaseController
         if (Input.GetKeyDown(KeyCode.Space))
         {      
             ShootingControl();
+            //Invoke("ShootingControl", 1f);
+            //GetComponent<AnimatioEvents>().ResetShooting();
             canShoot = false;
         }
     }
